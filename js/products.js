@@ -32,7 +32,7 @@ const initialProducts = [
     category: "sayur",
     price: 5000,
     stock: 60,
-    image: "assets/images/produk/kangkung.jpeg",
+    image: "assets/images/produk/kangkung.jpg",
   },
   {
     id: 5,
@@ -80,7 +80,7 @@ const initialProducts = [
     category: "sayur",
     price: 7000,
     stock: 25,
-    image: "assets/images/produk/patola.jpeg",
+    image: "assets/images/produk/patola.jpg",
   },
   {
     id: 11,
@@ -96,7 +96,7 @@ const initialProducts = [
     category: "buah",
     price: 15000,
     stock: 20,
-    image: "assets/images/produk/sukun.jpeg",
+    image: "assets/images/produk/sukun.jpg",
   },
   {
     id: 13,
@@ -160,7 +160,7 @@ const initialProducts = [
     category: "rempah",
     price: 15000,
     stock: 20,
-    image: "assets/images/produk/lengkuas.jpeg",
+    image: "assets/images/produk/lengkuas.jpg",
   },
   {
     id: 21,
@@ -168,7 +168,7 @@ const initialProducts = [
     category: "rempah",
     price: 10000,
     stock: 30,
-    image: "assets/images/produk/sirih.jpeg",
+    image: "assets/images/produk/daun sirih.jpeg",
   },
   {
     id: 22,
@@ -176,7 +176,7 @@ const initialProducts = [
     category: "rempah",
     price: 12000,
     stock: 20,
-    image: "assets/images/produk/pinang.jpeg",
+    image: "assets/images/produk/pinang.jpg",
   },
   {
     id: 23,
@@ -200,7 +200,7 @@ const initialProducts = [
     category: "pertanian",
     price: 18000,
     stock: 25,
-    image: "assets/images/produk/labu jepang.jpeg",
+    image: "assets/images/produk/labu jepang.jpg",
   },
   {
     id: 26,
@@ -232,7 +232,7 @@ const initialProducts = [
     category: "kerajinan",
     price: 80000,
     stock: 20,
-    image: "assets/images/produk/gedeg.jpeg",
+    image: "assets/images/produk/gedeg.jpg",
   },
   {
     id: 30,
@@ -240,15 +240,7 @@ const initialProducts = [
     category: "kerajinan",
     price: 120000,
     stock: 15,
-    image: "assets/images/produk/tirai bambu.jpeg",
-  },
-  {
-    id: 31,
-    name: "Kurungan Ayam",
-    category: "kerajinan",
-    price: 90000,
-    stock: 15,
-    image: "assets/images/produk/kurungan ayam.jpeg",
+    image: "assets/images/produk/tirai bambu.jpg",
   },
   {
     id: 32,
