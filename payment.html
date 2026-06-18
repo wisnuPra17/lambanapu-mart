@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pembayaran - Lambanapu Mart</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/logo website.png" />
+    <style>
+        .payment-container {
+            max-width: 600px;
+            margin: 60px auto;
+            padding: 30px;
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            font-family: sans-serif;
+        }
+
+        .amount-box {
+            background: #f4f9f4;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-size: 26px;
+            color: #2ecc71;
+            font-weight: bold;
+        }
+
+        .instruction-box {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px dashed #ccc;
+            text-align: left;
+            margin-bottom: 25px;
+        }
+
+        .va-number {
+            font-size: 22px;
+            font-weight: bold;
+            color: #333;
+            letter-spacing: 1px;
+            margin: 10px 0;
+            display: inline-block;
+            background: #eee;
+            padding: 8px 15px;
+            border-radius: 5px;
+            width: 100%;
+            text-align: center;
+            box-sizing: border-box;
+        }
+
+        .qr-code {
+            width: 220px;
+            height: 220px;
+            margin: 15px auto;
+            display: block;
+            border: 1px solid #ddd;
+            padding: 5px;
+        }
+
+        .btn-done {
+            background: #2ecc71;
+            color: white;
+            border: none;
+            padding: 14px 30px;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: bold;
+        }
+
+        .btn-done:hover {
+            background: #27ae60;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="payment-container">
+        <div id="paymentIcon" style="font-size: 60px; color: #2ecc71; margin-bottom: 15px">
+            <i class="fas fa-wallet"></i>
+        </div>
+
+        <h1 id="paymentTitle">Instruksi Pembayaran</h1>
+        <p style="color: #666; margin-top: 5px">
+            Selesaikan pembayaran Anda agar pesanan segera diproses
+        </p>
+
+        <div class="amount-box" id="totalAmount">Rp 0</div>
+
+        <div class="instruction-box" id="instructionContent"></div>
+
+        <button class="btn-done" onclick="finishOrder()">
+            Saya Sudah Bayar / Selesai
+        </button>
+    </div>
+
+    <script>
+        const orderData = JSON.parse(localStorage.getItem("latestOrder"));
+
+        if (!orderData) {
+            alert("Data transaksi tidak ditemukan!");
+            window.location.href = "index.html";
+        } else {
+            document.getElementById("totalAmount").textContent =
+                "Rp " + orderData.total.toLocaleString("id-ID");
+
+            const instructionContainer =
+                document.getElementById("instructionContent");
+            const iconContainer = document.getElementById("paymentIcon");
+            const titleContainer = document.getElementById("paymentTitle");
+
+            if (orderData.paymentMethod === "Transfer Bank") {
+                titleContainer.textContent = "Transfer Virtual Account";
+                iconContainer.innerHTML =
+                    '<i class="fas fa-university" style="color:#2ecc71;"></i>';
+                instructionContainer.innerHTML = `
+                    <p><strong>Bank Vendor:</strong> Permata / Mandiri Virtual Account</p>
+                    <p style="margin-top:10px;"><strong>Nomor Rekening VA:</strong></p>
+                    <div class="va-number">8830198234761209</div>
+                    <p style="font-size: 13px; color: #777; margin-top: 10px; line-height: 1.4;">
+                        *Masukkan nomor Virtual Account di atas melalui menu transfer VA m-Banking atau ATM milik Anda. Transaksi diverifikasi instan secara otomatis.
+                    </p>
+                `;
+            } else if (orderData.paymentMethod === "QRIS") {
+                titleContainer.textContent = "Scan Kode QRIS";
+                iconContainer.innerHTML =
+                    '<i class="fas fa-qrcode" style="color:#2ecc71;"></i>';
+                instructionContainer.innerHTML = `
+                    <p style="text-align: center;"><strong>Lambanapu Mart QRIS Gateway</strong></p>
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=LambanapuMart-Total-${orderData.total}" class="qr-code" alt="QRIS Barcode">
+                    <p style="font-size: 13px; color: #777; text-align: center; margin-top: 10px; line-height: 1.4;">
+                        Mendukung Dana, OVO, LinkAja, GoPay, ShopeePay & Seluruh m-Banking Indonesia. Silakan tangkap layar (screenshot) atau scan barcode di atas.
+                    </p>
+                `;
+            } else if (orderData.paymentMethod === "COD") {
+                titleContainer.textContent = "Bayar di Tempat (COD)";
+                iconContainer.innerHTML =
+                    '<i class="fas fa-money-bill-wave" style="color:#2ecc71;"></i>';
+                instructionContainer.innerHTML = `
+                    <p><strong>Sistem Penyerahan:</strong> Cash on Delivery</p>
+                    <p><strong>Metode Pengambilan:</strong> ${orderData.deliveryMethod}</p>
+                    <p><strong>Alamat Tujuan:</strong> ${orderData.alamat}</p>
+                    <p style="margin-top: 15px; font-size: 14px; color: #555; line-height: 1.4; border-top: 1px solid #eee; padding-top: 10px;">
+                        Silakan siapkan uang tunai sebesar pas untuk diserahkan ke kurir pengantar atau penjual saat serah terima barang dilakukan.
+                    </p>
+                `;
+            }
+        }
+
+        function finishOrder() {
+            alert(
+                "Konfirmasi diterima! Sistem Lambanapu Mart akan segera memvalidasi order Anda.",
+            );
+            localStorage.removeItem("latestOrder");
+            window.location.href = "index.html";
+        }
+    </script>
+</body>
+
+</html>

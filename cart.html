@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shopping Cart - Lambanapu Mart</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/logo website.png" />
+</head>
+
+<body>
+    <header class="header">
+        <div class="logo">
+            <img src="assets/icons/logo website.png" alt="Logo Lambanapu Mart" />
+            <span>Lambanapu Mart</span>
+        </div>
+        <nav>
+            <ul id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">Produk</a></li>
+                <li><a href="about.html">Tentang Kami</a></li>
+                <li><a href="contact.html">Kontak</a></li>
+                <li>
+                    <a href="cart.html" class="cart-btn">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span id="cartCount">0</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="cart-page">
+        <h1 style="margin-bottom: 30px">Shopping Cart</h1>
+        <div class="cart-layout">
+            <div class="cart-left">
+                <div id="cartItems"></div>
+            </div>
+
+            <div class="cart-right">
+                <h2 style="margin-bottom: 25px">Ringkasan Pesanan</h2>
+                <div class="summary-row">
+                    <span>Subtotal</span>
+                    <span id="subtotal">Rp 0</span>
+                </div>
+                <div class="summary-row">
+                    <span>Ongkir</span>
+                    <span id="shipping">Rp 0</span>
+                </div>
+                <hr style="margin: 20px 0" />
+                <div class="summary-row total">
+                    <span>Total</span>
+                    <span id="total">Rp 0</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section style="padding-top: 0">
+        <div class="cart-layout">
+            <div class="cart-left">
+                <div id="addressContainer" style="display: none">
+                    <h2 style="margin-bottom: 25px">Alamat Pengiriman</h2>
+                    <input type="text" id="nama" placeholder="Nama Lengkap" class="form-input" />
+                    <input type="text" id="telepon" placeholder="Nomor Telepon" class="form-input" />
+                    <textarea id="alamat" placeholder="Alamat Lengkap" class="form-input"
+                        style="height: 120px"></textarea>
+                </div>
+            </div>
+
+            <div class="cart-right">
+                <div class="form-group" style="margin-bottom: 30px">
+                    <h2 style="margin-bottom: 25px">Metode Pengambilan</h2>
+
+                    <div class="method-option" style="
+                margin-bottom: 10px;
+                padding: 10px;
+                border: 1px solid #ddd;
+                border-radius: 8px;
+              ">
+                        <label style="cursor: pointer; display: block; width: 100%">
+                            <input type="radio" name="delivery" value="pickup" checked />
+                            <strong>Ambil di Lokasi Jualan</strong> (Gratis)
+                        </label>
+                    </div>
+
+                    <div id="deliveryContainer" style="display: none; margin-bottom: 10px">
+                        <div class="method-option" style="
+                  padding: 10px;
+                  border: 1px solid #ddd;
+                  border-radius: 8px;
+                ">
+                            <label style="cursor: pointer; display: block; width: 100%">
+                                <input type="radio" name="delivery" value="delivery" />
+                                <strong>Pengantaran ke Alamat</strong> (Minimal Belanja
+                                Rp50.000)
+                            </label>
+                        </div>
+                    </div>
+
+                    <div id="locationContainer" style="
+                display: none;
+                margin-top: 15px;
+                padding: 15px;
+                border-left: 3px solid #2ecc71;
+                background-color: #f9f9f9;
+                border-radius: 0 8px 8px 0;
+              ">
+                        <p style="margin-bottom: 10px; font-weight: bold">
+                            Pilih Wilayah Pengantaran:
+                        </p>
+                        <div style="margin-bottom: 8px">
+                            <label style="cursor: pointer">
+                                <input type="radio" name="location_type" value="dalam_kota" checked />
+                                Dalam Kota (Gratis Ongkir)
+                            </label>
+                        </div>
+                        <div>
+                            <label style="cursor: pointer">
+                                <input type="radio" name="location_type" value="luar_kota" />
+                                Luar Kota (Tarif Sesuai Jarak / Grab)
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <h2 style="margin-bottom: 25px">Metode Pembayaran</h2>
+                <label class="payment">
+                    <input type="radio" name="payment" value="Transfer Bank" checked />
+                    Transfer Bank
+                </label>
+                <label class="payment">
+                    <input type="radio" name="payment" value="QRIS" />
+                    QRIS
+                </label>
+                <label class="payment">
+                    <input type="radio" name="payment" value="COD" />
+                    COD
+                </label>
+
+                <button class="checkout-final" onclick="checkout()" style="margin-top: 20px">
+                    Checkout Sekarang
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <script src="js/cart.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Riwayat Pesanan - Lambanapu Mart</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-weight/6.0.0-beta3/css/all.min.css" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/logo website.png" />
+    <style>
+        body {
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f5;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        h2 {
+            color: #2e7d32;
+            margin-bottom: 25px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .order-card {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            padding: 20px;
+            margin-bottom: 20px;
+            border-top: 4px solid #2e7d32;
+        }
+
+        .order-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px dashed #eee;
+            padding-bottom: 12px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .order-id {
+            font-weight: 700;
+            color: #444;
+        }
+
+        .order-date {
+            color: #888;
+            font-size: 14px;
+        }
+
+        /* Pewarnaan Status Badge */
+        .status-badge {
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .status-proses {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+
+        .status-antar {
+            background-color: #cce5ff;
+            color: #004085;
+        }
+
+        .status-selesai {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .product-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #f9f9f9;
+        }
+
+        .product-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .product-img {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 6px;
+        }
+
+        .product-name {
+            font-weight: 600;
+            font-size: 15px;
+            color: #333;
+        }
+
+        .product-qty {
+            color: #777;
+            font-size: 13px;
+        }
+
+        .product-price {
+            font-weight: 600;
+            color: #2e7d32;
+            font-size: 14px;
+        }
+
+        .order-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+            padding-top: 12px;
+            border-top: 1px solid #eee;
+        }
+
+        .delivery-info {
+            font-size: 13px;
+            color: #666;
+        }
+
+        .total-pay {
+            font-size: 16px;
+            font-weight: 700;
+            color: #333;
+        }
+
+        .total-pay span {
+            color: #2e7d32;
+            font-size: 18px;
+        }
+
+        .empty-history {
+            text-align: center;
+            padding: 50px 20px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .empty-history i {
+            font-size: 60px;
+            color: #ccc;
+            margin-bottom: 15px;
+        }
+
+        .btn-belanja {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 25px;
+            background: #2e7d32;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+
+        .btn-belanja:hover {
+            background: #236327;
+        }
+
+        /* Tombol Simulasi untuk testing */
+        .btn-simulasi {
+            background: #333;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 11px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2><i class="fas fa-history"></i> Riwayat Belanja Anda</h2>
+
+        <div id="historyContainer"></div>
+    </div>
+
+    <script src="js/cart.js"></script>
+    <script src="js/history.js"></script>
+</body>
+
+</html>

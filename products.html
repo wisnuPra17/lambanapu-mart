@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Produk - Lambanapu Mart</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/logo website.png" />
+</head>
+
+<body>
+    <header class="header">
+        <div class="logo">
+            <img src="assets/icons/logo website.png" alt="Logo Lambanapu Mart" />
+            <span>Lambanapu Mart</span>
+        </div>
+        <nav>
+            <ul id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">Produk</a></li>
+                <li><a href="about.html">Tentang Kami</a></li>
+                <li><a href="contact.html">Kontak</a></li>
+                <li>
+                    <a href="cart.html" class="cart-btn">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span id="cartCount">0</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="products-layout">
+        <div class="sidebar">
+            <h3>Kategori Produk</h3>
+            <button class="category-btn active" data-category="all">
+                Semua Produk
+            </button>
+            <button class="category-btn" data-category="sayur">
+                Sayur-Sayuran
+            </button>
+            <button class="category-btn" data-category="buah">Buah-Buahan</button>
+            <button class="category-btn" data-category="rempah">
+                Rempah-Rempah
+            </button>
+            <button class="category-btn" data-category="pertanian">
+                Hasil Pertanian
+            </button>
+            <button class="category-btn" data-category="peternakan">
+                Peternakan
+            </button>
+            <button class="category-btn" data-category="kerajinan">
+                Kerajinan Lokal
+            </button>
+            <button class="category-btn" data-category="material">
+                Material Bangunan
+            </button>
+        </div>
+
+        <div class="products-container">
+            <div class="products-grid" id="productsGrid"></div>
+        </div>
+    </section>
+
+    <div class="modal" id="cartModal">
+        <div class="modal-content">
+            <h2>Produk Berhasil Ditambahkan</h2>
+            <p>
+                Apakah Anda ingin melanjutkan belanja atau langsung menuju checkout?
+            </p>
+            <div class="modal-buttons">
+                <button class="continue-btn" onclick="closeModal()">
+                    Lanjutkan Belanja
+                </button>
+                <a href="cart.html" class="checkout-btn">Checkout Sekarang</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/products.js"></script>
+    <script src="js/cart.js"></script>
+</body>
+
+</html>

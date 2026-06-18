@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lambanapu Mart</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/logo website.png" />
+    <style>
+        /* Memaksa grid produk unggulan menjadi tepat 3 kolom sejajar */
+        .featured-grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        /* Responsif: Menjadi 1 kolom jika dibuka dari HP */
+        @media (max-width: 768px) {
+            .featured-grid-3 {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="logo">
+            <img src="assets/icons/logo website.png" alt="Logo Lambanapu Mart" />
+            <span>Lambanapu Mart</span>
+        </div>
+        <nav>
+            <ul id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">Produk</a></li>
+                <li><a href="about.html">Tentang Kami</a></li>
+                <li><a href="contact.html">Kontak</a></li>
+                <li>
+                    <a href="cart.html" class="cart-btn">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span id="cartCount">0</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="overlay"></div>
+        <div class="hero-content">
+            <h1>Hasil Bumi Terbaik dari Kelurahan Lambanapu</h1>
+            <p>
+                Menyediakan hasil pertanian, peternakan, perikanan, rempah-rempah dan
+                kerajinan lokal berkualitas langsung dari masyarakat Lambanapu.
+            </p>
+            <a href="products.html" class="btn">Belanja Sekarang</a>
+        </div>
+    </section>
+
+    <section class="kategori">
+        <div class="section-title">
+            <h2>Kategori Produk</h2>
+            <p>Pilih produk sesuai kebutuhan Anda</p>
+        </div>
+        <div class="kategori-grid">
+            <a href="products.html?category=sayur" class="kategori-card">
+                <i class="fas fa-seedling"></i>
+                <h3>Sayur-Sayuran</h3>
+            </a>
+            <a href="products.html?category=buah" class="kategori-card">
+                <i class="fas fa-apple-whole"></i>
+                <h3>Buah-Buahan</h3>
+            </a>
+            <a href="products.html?category=rempah" class="kategori-card">
+                <i class="fas fa-mortar-pestle"></i>
+                <h3>Rempah-Rempah</h3>
+            </a>
+            <a href="products.html?category=pertanian" class="kategori-card">
+                <i class="fas fa-tractor"></i>
+                <h3>Hasil Pertanian</h3>
+            </a>
+            <a href="products.html?category=peternakan" class="kategori-card">
+                <i class="fas fa-cow"></i>
+                <h3>Peternakan</h3>
+            </a>
+            <a href="products.html?category=kerajinan" class="kategori-card">
+                <i class="fas fa-hammer"></i>
+                <h3>Kerajinan Lokal</h3>
+            </a>
+            <a href="products.html?category=material" class="kategori-card">
+                <i class="fas fa-building"></i>
+                <h3>Material Bangunan</h3>
+            </a>
+        </div>
+    </section>
+
+    <section class="featured">
+        <div class="section-title">
+            <h2>Produk Unggulan</h2>
+            <p>Produk pilihan masyarakat Lambanapu</p>
+        </div>
+
+        <div class="featured-grid-3">
+            <div class="product-card">
+                <img src="/assets/images/produk/kain tenun.jpeg" alt="Kain Tenun Kambera" />
+                <h3>Kain Tenun Kambera</h3>
+                <p>Rp 5.000.000</p>
+            </div>
+
+            <div class="product-card">
+                <img src="/assets/images/produk/pisang merah.jpg" alt="Pisang Merah" />
+                <h3>Pisang Merah</h3>
+                <p>Rp 20.000</p>
+            </div>
+
+            <div class="product-card">
+                <img src="/assets/images/produk/jagung manis.jpeg" alt="Jagung Manis" />
+                <h3>Jagung Manis</h3>
+                <p>Rp 15.000</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-preview">
+        <div class="about-content">
+            <h2>Tentang Lambanapu Mart</h2>
+            <p>
+                Lambanapu Mart merupakan marketplace lokal yang dibangun untuk
+                memasarkan hasil bumi, hasil pertanian, peternakan, perikanan, dan
+                kerajinan masyarakat Kelurahan Lambanapu.
+            </p>
+            <p>
+                Melalui platform ini masyarakat dapat menjual produk secara lebih luas
+                sekaligus meningkatkan perekonomian daerah.
+            </p>
+            <a href="about.html" class="btn">Selengkapnya</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <h3>Lambanapu Mart</h3>
+            <p>Marketplace hasil bumi dan produk lokal Kelurahan Lambanapu.</p>
+            <div class="social">
+                <i class="fab fa-facebook"></i>
+                <i class="fab fa-instagram"></i>
+            </div>
+        </div>
+        <div class="copyright">© 2026 Lambanapu Mart. All Rights Reserved.</div>
+    </footer>
+
+    <script src="js/cart.js"></script>
+</body>
+
+</html>

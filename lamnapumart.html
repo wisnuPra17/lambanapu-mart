@@ -1,0 +1,1238 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lambanapu Mart - Hasil Pertanian Segar dari Petani Lambanapu, Sumba Timur.">
+    <title>Lambanapu Mart | Hasil Bumi Sumba Timur</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* --- GLOBAL VARIABLES & RESET --- */
+        :root {
+            --primary-green: #2E7D32;
+            /* Hijau Tua */
+            --secondary-green: #66BB6A;
+            /* Hijau Muda */
+            --accent-yellow: #FBC02D;
+            /* Kuning Jagung */
+            --white: #FFFFFF;
+            --light-grey: #F5F5F5;
+            --dark-grey: #212121;
+            --border-radius: 12px;
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 8px 16px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light-grey);
+            color: var(--dark-grey);
+            overflow-x: hidden;
+            padding-top: 76px;
+            /* Offset for sticky navbar */
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        /* --- UTILITIES --- */
+        .text-primary-custom {
+            color: var(--primary-green);
+        }
+
+        .bg-primary-custom {
+            background-color: var(--primary-green) !important;
+        }
+
+        .text-accent {
+            color: var(--accent-yellow);
+        }
+
+        .btn-primary-custom {
+            background-color: var(--primary-green);
+            color: var(--white);
+            border: none;
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .btn-primary-custom:hover {
+            background-color: #1b5e20;
+            color: var(--white);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-outline-custom {
+            border: 2px solid var(--primary-green);
+            color: var(--primary-green);
+            border-radius: 50px;
+            padding: 8px 24px;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .btn-outline-custom:hover {
+            background-color: var(--primary-green);
+            color: var(--white);
+        }
+
+        .section-padding {
+            padding: 60px 0;
+        }
+
+        .card {
+            border: none;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-sm);
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-5px);
+        }
+
+        /* --- NAVBAR --- */
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow-sm);
+            padding: 15px 0;
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            color: var(--primary-green) !important;
+            font-size: 1.5rem;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            color: var(--dark-grey);
+            margin: 0 10px;
+            transition: var(--transition);
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--primary-green);
+        }
+
+        .badge-cart {
+            background-color: var(--accent-yellow);
+            color: var(--dark-grey);
+            font-size: 0.7rem;
+            position: absolute;
+            top: 0;
+            right: 0;
+            border-radius: 50%;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://picsum.photos/seed/sumbafield/1920/1080.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            /* Parallax effect */
+            height: 85vh;
+            display: flex;
+            align-items: center;
+            color: var(--white);
+            text-align: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        /* --- CATEGORIES --- */
+        .category-card {
+            text-align: center;
+            padding: 20px;
+            cursor: pointer;
+            border: 1px solid #eee;
+        }
+
+        .category-card:hover {
+            border-color: var(--primary-green);
+            background-color: #f1f8e9;
+        }
+
+        .category-icon {
+            font-size: 2.5rem;
+            color: var(--primary-green);
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+
+        /* --- PRODUCT CARDS --- */
+        .product-card .product-img {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .discount-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: #e53935;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .wishlist-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: white;
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: var(--shadow-sm);
+            color: #ccc;
+            transition: var(--transition);
+            border: none;
+        }
+
+        .wishlist-btn.active {
+            color: #e53935;
+        }
+
+        .wishlist-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .rating-stars {
+            color: var(--accent-yellow);
+            font-size: 0.9rem;
+        }
+
+        .product-price {
+            font-weight: 700;
+            color: var(--primary-green);
+            font-size: 1.1rem;
+        }
+
+        .original-price {
+            text-decoration: line-through;
+            color: #999;
+            font-size: 0.9rem;
+            margin-right: 5px;
+        }
+
+        /* --- PROMO BANNER --- */
+        .promo-banner {
+            background: linear-gradient(45deg, var(--primary-green), var(--secondary-green));
+            color: white;
+            padding: 40px 0;
+            border-radius: var(--border-radius);
+            margin: 60px 0;
+        }
+
+        .countdown-item {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px;
+            border-radius: 8px;
+            min-width: 70px;
+            text-align: center;
+            margin: 0 5px;
+        }
+
+        .countdown-number {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: block;
+        }
+
+        .countdown-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: var(--dark-grey);
+            color: #bbb;
+            padding-top: 60px;
+        }
+
+        footer h5 {
+            color: var(--white);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        footer ul li {
+            margin-bottom: 10px;
+        }
+
+        footer a:hover {
+            color: var(--accent-yellow);
+        }
+
+        .social-icons a {
+            display: inline-flex;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin-right: 10px;
+            transition: var(--transition);
+        }
+
+        .social-icons a:hover {
+            background: var(--primary-green);
+        }
+
+        .copyright {
+            background-color: #1a1a1a;
+            padding: 20px 0;
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        /* --- PAGE: PRODUCTS --- */
+        .sidebar-filter {
+            background: white;
+            padding: 20px;
+            border-radius: var(--border-radius);
+            margin-bottom: 20px;
+        }
+
+        .filter-title {
+            font-weight: 600;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        .form-check-input:checked {
+            background-color: var(--primary-green);
+            border-color: var(--primary-green);
+        }
+
+        /* --- PAGE: CART --- */
+        .cart-table th {
+            border-top: none;
+            color: #666;
+            font-weight: 500;
+        }
+
+        .qty-input {
+            width: 60px;
+            text-align: center;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .cart-summary {
+            background: white;
+            padding: 25px;
+            border-radius: var(--border-radius);
+            border-top: 4px solid var(--primary-green);
+        }
+
+        /* --- TOAST NOTIFICATION --- */
+        .toast-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1100;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+
+            .section-padding {
+                padding: 40px 0;
+            }
+
+            .hero-section {
+                height: 70vh;
+            }
+
+            .sidebar-filter {
+                margin-bottom: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR STICKY -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#" onclick="navigateTo('home')">
+                <i class="bi bi-shop-fill me-2"></i>Lambanapu Mart
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link active" href="#" onclick="navigateTo('home')">Beranda</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="#" onclick="navigateTo('products')">Produk</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Kategori</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Tentang Kami</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Kontak</a></li>
+                    <li class="nav-item ms-lg-2"><a class="btn btn-outline-custom btn-sm px-3" href="#">Login</a></li>
+                    <li class="nav-item ms-lg-2"><a class="btn btn-outline-custom btn-sm px-3" href="#">Daftar</a></li>
+                    <li class="nav-item ms-lg-3 position-relative">
+                        <a class="btn btn-link p-0 text-dark" href="#" onclick="navigateTo('cart')">
+                            <i class="bi bi-cart3 fs-5"></i>
+                            <span id="cart-badge" class="badge badge-cart">0</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT CONTAINER (SPA VIEWS) -->
+    <main id="main-content">
+
+        <!-- VIEW 1: HOME -->
+        <div id="home-view">
+            <!-- Hero Section -->
+            <section class="hero-section">
+                <div class="container hero-content">
+                    <h1>Hasil Pertanian Segar Langsung dari Petani Lambanapu</h1>
+                    <p>Mendukung petani lokal dan menghadirkan produk berkualitas dari tanah Sumba Timur ke rumah Anda.
+                    </p>
+                    <div class="mt-4">
+                        <button class="btn btn-primary-custom btn-lg me-3" onclick="navigateTo('products')">Belanja
+                            Sekarang</button>
+                        <button class="btn btn-light rounded-pill px-4 btn-lg" onclick="navigateTo('products')">Lihat
+                            Produk</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Kategori Produk -->
+            <section class="section-padding">
+                <div class="container">
+                    <div class="text-center mb-5">
+                        <h2 class="fw-bold">Kategori Pilihan</h2>
+                        <p class="text-muted">Temukan kebutuhan pertanian terlengkap di sini</p>
+                    </div>
+                    <div class="row g-3" id="category-container">
+                        <!-- Categories will be injected by JS -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Banner Promo -->
+            <section class="container">
+                <div class="promo-banner">
+                    <div class="row align-items-center">
+                        <div class="col-md-8 text-center text-md-start">
+                            <h3 class="fw-bold mb-2"><i class="bi bi-tag-fill me-2"></i>Promo Panen Raya!</h3>
+                            <p class="mb-0">Diskon hingga 30% untuk produk sayuran segar minggu ini.</p>
+                        </div>
+                        <div class="col-md-4 text-center mt-3 mt-md-0">
+                            <div id="countdown" class="d-flex justify-content-center">
+                                <!-- Countdown JS injected here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Produk Unggulan -->
+            <section class="section-padding">
+                <div class="container">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h2 class="fw-bold">Produk Unggulan</h2>
+                        <a href="#" class="text-primary-custom fw-bold" onclick="navigateTo('products')">Lihat Semua <i
+                                class="bi bi-arrow-right"></i></a>
+                    </div>
+                    <div class="row g-4" id="featured-products">
+                        <!-- Featured products injected by JS -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Keunggulan Kami -->
+            <section class="section-padding bg-white">
+                <div class="container">
+                    <div class="text-center mb-5">
+                        <h2 class="fw-bold">Mengapa Lambanapu Mart?</h2>
+                    </div>
+                    <div class="row g-4">
+                        <div class="col-md-3 col-6 text-center">
+                            <div class="mb-3 text-success"><i class="bi bi-flower1 fs-1"></i></div>
+                            <h5>Produk Segar</h5>
+                            <p class="text-muted small">Langsung dari kebun saat panen.</p>
+                        </div>
+                        <div class="col-md-3 col-6 text-center">
+                            <div class="mb-3 text-success"><i class="bi bi-people-fill fs-1"></i></div>
+                            <h5>Petani Lokal</h5>
+                            <p class="text-muted small">Menghidupkan ekonomi masyarakat Sumba.</p>
+                        </div>
+                        <div class="col-md-3 col-6 text-center">
+                            <div class="mb-3 text-success"><i class="bi bi-cash-coin fs-1"></i></div>
+                            <h5>Harga Jujur</h5>
+                            <p class="text-muted small">Terjangkau dan berkualitas premium.</p>
+                        </div>
+                        <div class="col-md-3 col-6 text-center">
+                            <div class="mb-3 text-success"><i class="bi bi-truck fs-1"></i></div>
+                            <h5>Pengiriman Cepat</h5>
+                            <p class="text-muted small">Siap kirim ke seluruh Indonesia.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Testimoni -->
+            <section class="section-padding">
+                <div class="container">
+                    <div class="text-center mb-5">
+                        <h2 class="fw-bold">Kata Pelanggan</h2>
+                    </div>
+                    <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner text-center">
+                            <div class="carousel-item active">
+                                <div class="d-flex justify-content-center mb-3">
+                                    <img src="https://picsum.photos/seed/user1/60/60.jpg" class="rounded-circle border"
+                                        alt="User">
+                                </div>
+                                <p class="fst-italic w-75 mx-auto">"Jagung Sumba di sini benar-benar manis dan segar.
+                                    Pengiriman ke Waingapu sangat cepat!"</p>
+                                <h5 class="fw-bold">Maria R.</h5>
+                                <div class="rating-stars"><i class="bi bi-star-fill"></i><i
+                                        class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                        class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="d-flex justify-content-center mb-3">
+                                    <img src="https://picsum.photos/seed/user2/60/60.jpg" class="rounded-circle border"
+                                        alt="User">
+                                </div>
+                                <p class="fst-italic w-75 mx-auto">"Suka sekali dengan kacang metenya, besar-besar dan
+                                    gurih. Sukses terus Lambanapu Mart!"</p>
+                                <h5 class="fw-bold">Yohanes K.</h5>
+                                <div class="rating-stars"><i class="bi bi-star-fill"></i><i
+                                        class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                        class="bi bi-star-fill"></i><i class="bi bi-star-half"></i></div>
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel"
+                            data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon bg-secondary rounded-circle"
+                                aria-hidden="true"></span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel"
+                            data-bs-slide="next">
+                            <span class="carousel-control-next-icon bg-secondary rounded-circle"
+                                aria-hidden="true"></span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Newsletter -->
+            <section class="section-padding bg-white">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-md-6 text-center">
+                            <h4 class="fw-bold mb-3">Berlangganan Newsletter</h4>
+                            <p class="text-muted mb-4">Dapatkan info promo terbaru dan tips pertanian.</p>
+                            <form id="newsletterForm" class="d-flex gap-2" onsubmit="handleNewsletter(event)">
+                                <input type="email" id="emailInput" class="form-control rounded-pill"
+                                    placeholder="Masukkan email Anda" required>
+                                <button type="submit" class="btn btn-primary-custom rounded-pill">Langganan</button>
+                            </form>
+                            <div id="newsletterFeedback" class="mt-2 small"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- VIEW 2: PRODUCTS -->
+        <div id="products-view" class="d-none section-padding">
+            <div class="container">
+                <!-- Header & Breadcrumb -->
+                <div class="mb-4">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#" onclick="navigateTo('home')">Beranda</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Katalog Produk</li>
+                        </ol>
+                    </nav>
+                    <h2 class="fw-bold">Katalog Produk Pertanian</h2>
+                </div>
+
+                <div class="row">
+                    <!-- Sidebar Filter -->
+                    <div class="col-lg-3">
+                        <div class="sidebar-filter sticky-top" style="top: 90px;">
+                            <h5 class="filter-title">Cari Produk</h5>
+                            <div class="mb-3">
+                                <input type="text" id="searchInput" class="form-control" placeholder="Nama produk..."
+                                    onkeyup="filterProducts()">
+                            </div>
+
+                            <h5 class="filter-title mt-4">Kategori</h5>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input filter-category" type="checkbox" value="Sayuran"
+                                    id="cat1" onchange="filterProducts()">
+                                <label class="form-check-label" for="cat1">Sayuran</label>
+                            </div>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input filter-category" type="checkbox" value="Buah" id="cat2"
+                                    onchange="filterProducts()">
+                                <label class="form-check-label" for="cat2">Buah-buahan</label>
+                            </div>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input filter-category" type="checkbox" value="Umbi" id="cat3"
+                                    onchange="filterProducts()">
+                                <label class="form-check-label" for="cat3">Umbi-umbian</label>
+                            </div>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input filter-category" type="checkbox" value="Rempah" id="cat4"
+                                    onchange="filterProducts()">
+                                <label class="form-check-label" for="cat4">Rempah-rempah</label>
+                            </div>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input filter-category" type="checkbox" value="Biji" id="cat5"
+                                    onchange="filterProducts()">
+                                <label class="form-check-label" for="cat5">Kacang & Biji</label>
+                            </div>
+
+                            <h5 class="filter-title mt-4">Urutkan</h5>
+                            <select class="form-select" id="sortSelect" onchange="filterProducts()">
+                                <option value="newest">Terbaru</option>
+                                <option value="low-high">Harga: Rendah ke Tinggi</option>
+                                <option value="high-low">Harga: Tinggi ke Rendah</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Product Grid -->
+                    <div class="col-lg-9">
+                        <div class="row g-4" id="product-grid-container">
+                            <!-- Products injected by JS -->
+                        </div>
+
+                        <!-- Pagination -->
+                        <nav class="mt-5">
+                            <ul class="pagination justify-content-center">
+                                <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
+                                <li class="page-item active"><a class="page-link bg-success border-success"
+                                        href="#">1</a></li>
+                                <li class="page-item"><a class="page-link text-dark" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link text-dark" href="#">3</a></li>
+                                <li class="page-item"><a class="page-link text-dark" href="#">Next</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- VIEW 3: CART -->
+        <div id="cart-view" class="d-none section-padding">
+            <div class="container">
+                <div class="mb-4">
+                    <h2 class="fw-bold">Keranjang Belanja</h2>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="card p-3">
+                            <div class="table-responsive">
+                                <table class="table align-middle cart-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Produk</th>
+                                            <th>Harga</th>
+                                            <th>Jumlah</th>
+                                            <th>Subtotal</th>
+                                            <th>Aksi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="cart-table-body">
+                                        <!-- Cart items injected by JS -->
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div id="empty-cart-msg" class="text-center py-5 d-none">
+                                <i class="bi bi-cart-x display-4 text-muted"></i>
+                                <p class="mt-3">Keranjang Anda masih kosong.</p>
+                                <button class="btn btn-outline-custom mt-2" onclick="navigateTo('products')">Mulai
+                                    Belanja</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 mt-4 mt-lg-0">
+                        <div class="cart-summary">
+                            <h5 class="fw-bold mb-4">Ringkasan Belanja</h5>
+                            <div class="d-flex justify-content-between mb-3">
+                                <span>Total Produk</span>
+                                <span id="summary-count">0 item</span>
+                            </div>
+                            <div class="d-flex justify-content-between mb-3">
+                                <span>Total Harga</span>
+                                <span id="summary-total">Rp 0</span>
+                            </div>
+                            <div class="d-flex justify-content-between mb-3">
+                                <span>Ongkir (Simulasi)</span>
+                                <span>Rp 15.000</span>
+                            </div>
+                            <hr>
+                            <div class="d-flex justify-content-between mb-4 fw-bold fs-5">
+                                <span>Grand Total</span>
+                                <span class="text-primary-custom" id="summary-grand">Rp 15.000</span>
+                            </div>
+                            <button class="btn btn-primary-custom w-100 mb-3" onclick="checkout()">Checkout
+                                Sekarang</button>
+                            <button class="btn btn-outline-custom w-100" onclick="navigateTo('products')">Lanjut
+                                Belanja</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4 mb-4">
+                    <h5 class="text-white"><i class="bi bi-shop-fill me-2"></i>Lambanapu Mart</h5>
+                    <p class="small">Platform digital untuk memajukan pertanian di Kelurahan Lambanapu, Sumba Timur.
+                        Kami menjembatani petani lokal dengan konsumen nasional.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="#"><i class="bi bi-instagram"></i></a>
+                        <a href="#"><i class="bi bi-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-6">
+                    <h5>Quick Links</h5>
+                    <ul>
+                        <li><a href="#" onclick="navigateTo('home')">Beranda</a></li>
+                        <li><a href="#" onclick="navigateTo('products')">Produk</a></li>
+                        <li><a href="#">Tentang Kami</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-6">
+                    <h5>Bantuan</h5>
+                    <ul>
+                        <li><a href="#">Cara Belanja</a></li>
+                        <li><a href="#">Konfirmasi Pembayaran</a></li>
+                        <li><a href="#">Kebijakan Pengiriman</a></li>
+                        <li><a href="#">Hubungi Kami</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <h5>Kontak</h5>
+                    <ul class="small">
+                        <li><i class="bi bi-geo-alt me-2"></i> Kel. Lambanapu, Kec. Kambera, Kab. Sumba Timur, NTT</li>
+                        <li><i class="bi bi-envelope me-2"></i> halo@lambanapumart.com</li>
+                        <li><i class="bi bi-telephone me-2"></i> +62 812 3456 7890</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 Lambanapu Mart. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- QUICK VIEW MODAL -->
+    <div class="modal fade" id="quickViewModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header border-0">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6 mb-3 mb-md-0">
+                            <img id="modal-img" src="" class="img-fluid rounded" alt="Product">
+                        </div>
+                        <div class="col-md-6">
+                            <h4 id="modal-title" class="fw-bold mb-2">Nama Produk</h4>
+                            <div id="modal-rating" class="rating-stars mb-2"></div>
+                            <h3 id="modal-price" class="text-primary-custom fw-bold mb-3">Rp 0</h3>
+                            <p class="text-muted small mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                Sed do eiusmod tempor incididunt ut labore.</p>
+                            <div class="d-flex align-items-center gap-3 mb-3">
+                                <span class="fw-bold">Stok:</span>
+                                <span id="modal-stock" class="badge bg-success">Tersedia</span>
+                            </div>
+                            <button class="btn btn-primary-custom w-100" id="modal-add-btn">
+                                <i class="bi bi-cart-plus me-2"></i>Tambah ke Keranjang
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOAST CONTAINER -->
+    <div class="toast-container p-3" id="toastContainer">
+        <!-- Toasts injected by JS -->
+    </div>
+
+    <!-- JAVASCRIPT -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        /* --- DATA DUMMY PRODUK SUMBA --- */
+        const productsData = [
+            { id: 1, name: "Jagung Manis Sumba", category: "Biji", price: 5000, rating: 5, stock: 50, discount: 0, img: "https://picsum.photos/seed/cornsumba/400/300.jpg" },
+            { id: 2, name: "Singkong Lambanapu", category: "Umbi", price: 8000, rating: 4, stock: 30, discount: 10, img: "https://picsum.photos/seed/cassava/400/300.jpg" },
+            { id: 3, name: "Kacang Tanah", category: "Biji", price: 25000, rating: 5, stock: 15, discount: 0, img: "https://picsum.photos/seed/peanut/400/300.jpg" },
+            { id: 4, name: "Jambu Mete (Cashew)", category: "Biji", price: 65000, rating: 4, stock: 10, discount: 5, img: "https://picsum.photos/seed/cashew/400/300.jpg" },
+            { id: 5, name: "Bayam Hijau Segar", category: "Sayuran", price: 3000, rating: 4, stock: 100, discount: 0, img: "https://picsum.photos/seed/spinach/400/300.jpg" },
+            { id: 6, name: "Cabai Rawit Merah", category: "Rempah", price: 15000, rating: 5, stock: 40, discount: 0, img: "https://picsum.photos/seed/chili/400/300.jpg" },
+            { id: 7, name: "Mangga Sumba (Harum Manis)", category: "Buah", price: 20000, rating: 5, stock: 25, discount: 15, img: "https://picsum.photos/seed/mango/400/300.jpg" },
+            { id: 8, name: "Ubi Jalar Ungu", category: "Umbi", price: 10000, rating: 4, stock: 35, discount: 0, img: "https://picsum.photos/seed/sweetpotato/400/300.jpg" },
+            { id: 9, name: "Beras Merah Lokal", category: "Biji", price: 18000, rating: 4, stock: 20, discount: 0, img: "https://picsum.photos/seed/rice/400/300.jpg" },
+            { id: 10, name: "Pepaya Kaliki", category: "Buah", price: 12000, rating: 4, stock: 15, discount: 0, img: "https://picsum.photos/seed/papaya/400/300.jpg" },
+            { id: 11, name: "Bawang Merah", category: "Rempah", price: 35000, rating: 5, stock: 20, discount: 0, img: "https://picsum.photos/seed/onion/400/300.jpg" },
+            { id: 12, name: "Sawi Putih", category: "Sayuran", price: 7000, rating: 3, stock: 40, discount: 0, img: "https://picsum.photos/seed/cabbage/400/300.jpg" }
+        ];
+
+        const categoriesData = [
+            { name: "Sayuran", icon: "bi-eggplant", count: 45 },
+            { name: "Buah", icon: "bi-apple", count: 32 },
+            { name: "Rempah", icon: "bi-fire", count: 18 },
+            { name: "Jagung", icon: "bi-tree", count: 12 },
+            { name: "Padi", icon: "bi-grain", count: 8 },
+            { name: "Umbi", icon: "bi-flower1", count: 15 },
+            { name: "Kacang", icon: "bi-circle-square", count: 20 },
+            { name: "Olahan", icon: "bi-basket", count: 10 }
+        ];
+
+        /* --- STATE MANAGEMENT --- */
+        let cart = JSON.parse(localStorage.getItem('lambanapuCart')) || [];
+        let wishlist = JSON.parse(localStorage.getItem('lambanapuWishlist')) || [];
+
+        /* --- INITIALIZATION --- */
+        document.addEventListener('DOMContentLoaded', () => {
+            renderCategories();
+            renderFeaturedProducts();
+            renderProductGrid(productsData); // Load all initially
+            updateCartBadge();
+            startCountdown();
+        });
+
+        /* --- NAVIGATION LOGIC (SPA) --- */
+        function navigateTo(view) {
+            // Hide all views
+            document.getElementById('home-view').classList.add('d-none');
+            document.getElementById('products-view').classList.add('d-none');
+            document.getElementById('cart-view').classList.add('d-none');
+
+            // Remove active class from nav
+            document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
+
+            // Show selected view
+            if (view === 'home') {
+                document.getElementById('home-view').classList.remove('d-none');
+                document.querySelector('.nav-link[onclick="navigateTo(\'home\')"]').classList.add('active');
+                window.scrollTo(0, 0);
+            } else if (view === 'products') {
+                document.getElementById('products-view').classList.remove('d-none');
+                // Re-render to ensure filters reset or stay as preferred
+                renderProductGrid(productsData);
+                window.scrollTo(0, 0);
+            } else if (view === 'cart') {
+                document.getElementById('cart-view').classList.remove('d-none');
+                renderCart();
+                window.scrollTo(0, 0);
+            }
+        }
+
+        /* --- RENDER FUNCTIONS --- */
+        function renderCategories() {
+            const container = document.getElementById('category-container');
+            container.innerHTML = categoriesData.map(cat => `
+                <div class="col-6 col-md-3">
+                    <div class="card category-card h-100" onclick="filterByCategory('${cat.name}')">
+                        <div class="card-body">
+                            <div class="category-icon"><i class="bi ${cat.icon}"></i></div>
+                            <h5 class="card-title fw-bold mb-1">${cat.name}</h5>
+                            <small class="text-muted">${cat.count} Produk</small>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function renderFeaturedProducts() {
+            const container = document.getElementById('featured-products');
+            const featured = productsData.slice(0, 4); // Ambil 4 produk pertama
+            container.innerHTML = featured.map(product => createProductCard(product)).join('');
+        }
+
+        function renderProductGrid(products) {
+            const container = document.getElementById('product-grid-container');
+            if (products.length === 0) {
+                container.innerHTML = '<div class="col-12 text-center py-5"><h5 class="text-muted">Produk tidak ditemukan.</h5></div>';
+                return;
+            }
+            container.innerHTML = products.map(product => createProductCard(product)).join('');
+            attachProductListeners();
+        }
+
+        function createProductCard(product) {
+            const isWishlisted = wishlist.includes(product.id) ? 'active' : '';
+            const priceDisplay = product.discount > 0
+                ? `<span class="original-price">Rp ${product.price.toLocaleString('id-ID')}</span> Rp ${Math.floor(product.price * (1 - product.discount / 100)).toLocaleString('id-ID')}`
+                : `Rp ${product.price.toLocaleString('id-ID')}`;
+
+            const discountBadge = product.discount > 0
+                ? `<div class="discount-badge">-${product.discount}%</div>`
+                : '';
+
+            const stars = "★".repeat(product.rating) + "☆".repeat(5 - product.rating);
+
+            return `
+                <div class="col-6 col-md-4 col-lg-3">
+                    <div class="card product-card h-100">
+                        <div class="product-img">
+                            ${discountBadge}
+                            <button class="wishlist-btn ${isWishlisted}" onclick="toggleWishlist(${product.id}, this)">
+                                <i class="bi bi-heart-fill"></i>
+                            </button>
+                            <img src="${product.img}" alt="${product.name}" data-id="${product.id}" class="quick-view-trigger">
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <small class="text-muted mb-1">${product.category}</small>
+                            <h6 class="card-title text-truncate mb-2">${product.name}</h6>
+                            <div class="rating-stars mb-2">${stars}</div>
+                            <div class="product-price mt-auto">${priceDisplay}</div>
+                            <button class="btn btn-primary-custom w-100 mt-3 btn-sm" onclick="addToCart(${product.id})">
+                                <i class="bi bi-cart-plus me-1"></i> Tambah
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        /* --- PRODUCT LOGIC --- */
+        function attachProductListeners() {
+            // Quick View Modal Trigger
+            document.querySelectorAll('.quick-view-trigger').forEach(img => {
+                img.addEventListener('click', function () {
+                    const id = parseInt(this.getAttribute('data-id'));
+                    const product = productsData.find(p => p.id === id);
+                    openQuickView(product);
+                });
+            });
+        }
+
+        function openQuickView(product) {
+            const modalEl = document.getElementById('quickViewModal');
+            const modal = new bootstrap.Modal(modalEl);
+
+            document.getElementById('modal-img').src = product.img;
+            document.getElementById('modal-title').textContent = product.name;
+            document.getElementById('modal-price').textContent = `Rp ${product.price.toLocaleString('id-ID')}`;
+            document.getElementById('modal-rating').innerHTML = "★".repeat(product.rating) + "☆".repeat(5 - product.rating);
+            document.getElementById('modal-stock').textContent = product.stock > 0 ? `Tersedia (${product.stock})` : "Habis";
+
+            // Bind Add Button in Modal
+            const btn = document.getElementById('modal-add-btn');
+            btn.onclick = function () {
+                addToCart(product.id);
+                modal.hide();
+            };
+
+            modal.show();
+        }
+
+        function filterByCategory(catName) {
+            navigateTo('products');
+            // Check the checkbox in sidebar
+            const checkboxes = document.querySelectorAll('.filter-category');
+            checkboxes.forEach(cb => {
+                cb.checked = (cb.value === catName);
+            });
+            filterProducts();
+        }
+
+        function filterProducts() {
+            const search = document.getElementById('searchInput').value.toLowerCase();
+            const checkedCategories = Array.from(document.querySelectorAll('.filter-category:checked')).map(cb => cb.value);
+            const sortType = document.getElementById('sortSelect').value;
+
+            let filtered = productsData.filter(p => {
+                const matchName = p.name.toLowerCase().includes(search);
+                const matchCat = checkedCategories.length === 0 || checkedCategories.includes(p.category);
+                return matchName && matchCat;
+            });
+
+            // Sorting
+            if (sortType === 'low-high') {
+                filtered.sort((a, b) => a.price - b.price);
+            } else if (sortType === 'high-low') {
+                filtered.sort((a, b) => b.price - a.price);
+            } else {
+                filtered.sort((a, b) => a.id - b.id); // Default by ID (Newest)
+            }
+
+            renderProductGrid(filtered);
+        }
+
+        /* --- CART LOGIC --- */
+        function addToCart(id) {
+            const product = productsData.find(p => p.id === id);
+            const existingItem = cart.find(item => item.id === id);
+
+            if (existingItem) {
+                existingItem.qty += 1;
+            } else {
+                cart.push({ ...product, qty: 1 });
+            }
+
+            saveCart();
+            showToast(`"${product.name}" ditambahkan ke keranjang`, 'success');
+        }
+
+        function removeFromCart(id) {
+            cart = cart.filter(item => item.id !== id);
+            saveCart();
+            renderCart();
+        }
+
+        function updateQty(id, change) {
+            const item = cart.find(i => i.id === id);
+            if (item) {
+                item.qty += change;
+                if (item.qty <= 0) {
+                    removeFromCart(id);
+                } else {
+                    saveCart();
+                    renderCart();
+                }
+            }
+        }
+
+        function saveCart() {
+            localStorage.setItem('lambanapuCart', JSON.stringify(cart));
+            updateCartBadge();
+        }
+
+        function updateCartBadge() {
+            const count = cart.reduce((acc, item) => acc + item.qty, 0);
+            document.getElementById('cart-badge').textContent = count;
+        }
+
+        function renderCart() {
+            const tbody = document.getElementById('cart-table-body');
+            const emptyMsg = document.getElementById('empty-cart-msg');
+
+            if (cart.length === 0) {
+                tbody.innerHTML = '';
+                emptyMsg.classList.remove('d-none');
+                document.querySelector('.table-responsive').classList.add('d-none');
+                updateSummary(0);
+                return;
+            }
+
+            emptyMsg.classList.add('d-none');
+            document.querySelector('.table-responsive').classList.remove('d-none');
+
+            tbody.innerHTML = cart.map(item => `
+                <tr>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <img src="${item.img}" width="50" height="50" class="rounded me-2 object-fit-cover">
+                            <div>
+                                <h6 class="mb-0">${item.name}</h6>
+                                <small class="text-muted">${item.category}</small>
+                            </div>
+                        </div>
+                    </td>
+                    <td>Rp ${item.price.toLocaleString('id-ID')}</td>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <button class="btn btn-sm btn-light border" onclick="updateQty(${item.id}, -1)">-</button>
+                            <input type="text" class="form-control form-control-sm qty-input mx-2" value="${item.qty}" readonly>
+                            <button class="btn btn-sm btn-light border" onclick="updateQty(${item.id}, 1)">+</button>
+                        </div>
+                    </td>
+                    <td class="fw-bold">Rp ${(item.price * item.qty).toLocaleString('id-ID')}</td>
+                    <td>
+                        <button class="btn btn-sm text-danger" onclick="removeFromCart(${item.id})"><i class="bi bi-trash"></i></button>
+                    </td>
+                </tr>
+            `).join('');
+
+            const total = cart.reduce((acc, item) => acc + (item.price * item.qty), 0);
+            updateSummary(total);
+        }
+
+        function updateSummary(total) {
+            document.getElementById('summary-count').textContent = cart.reduce((acc, item) => acc + item.qty, 0) + " item";
+            document.getElementById('summary-total').textContent = `Rp ${total.toLocaleString('id-ID')}`;
+            const shipping = total > 0 ? 15000 : 0;
+            document.getElementById('summary-grand').textContent = `Rp ${(total + shipping).toLocaleString('id-ID')}`;
+        }
+
+        function checkout() {
+            if (cart.length === 0) {
+                showToast("Keranjang kosong!", "danger");
+                return;
+            }
+            // Simulation
+            showToast("Redirecting to payment gateway...", "info");
+            setTimeout(() => {
+                alert("Ini adalah simulasi checkout. Di aplikasi nyata, Anda akan diarahkan ke halaman pembayaran.");
+                cart = [];
+                saveCart();
+                navigateTo('home');
+            }, 1500);
+        }
+
+        /* --- WISHLIST LOGIC --- */
+        function toggleWishlist(id, btn) {
+            const index = wishlist.indexOf(id);
+            if (index === -1) {
+                wishlist.push(id);
+                btn.classList.add('active');
+                showToast("Produk disimpan di Wishlist", "success");
+            } else {
+                wishlist.splice(index, 1);
+                btn.classList.remove('active');
+                showToast("Produk dihapus dari Wishlist", "warning");
+            }
+            localStorage.setItem('lambanapuWishlist', JSON.stringify(wishlist));
+        }
+
+        /* --- UTILS & ANIMATIONS --- */
+        function showToast(message, type = 'success') {
+            const bgClass = type === 'success' ? 'text-bg-success' : (type === 'danger' ? 'text-bg-danger' : 'text-bg-info');
+            const toastHtml = `
+                <div class="toast align-items-center ${bgClass} border-0" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="d-flex">
+                        <div class="toast-body">
+                            ${message}
+                        </div>
+                        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                    </div>
+                </div>
+            `;
+            const container = document.getElementById('toastContainer');
+            container.insertAdjacentHTML('beforeend', toastHtml);
+
+            const toastEl = container.lastElementChild;
+            const toast = new bootstrap.Toast(toastEl, { delay: 3000 });
+            toast.show();
+
+            toastEl.addEventListener('hidden.bs.toast', () => {
+                toastEl.remove();
+            });
+        }
+
+        function startCountdown() {
+            // Set countdown to 3 days from now
+            const targetDate = new Date();
+            targetDate.setDate(targetDate.getDate() + 3);
+
+            setInterval(() => {
+                const now = new Date().getTime();
+                const distance = targetDate - now;
+
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                const html = `
+                    <div class="countdown-item"><span class="countdown-number">${days}</span><span class="countdown-label">Hari</span></div>
+                    <div class="countdown-item"><span class="countdown-number">${hours}</span><span class="countdown-label">Jam</span></div>
+                    <div class="countdown-item"><span class="countdown-number">${minutes}</span><span class="countdown-label">Menit</span></div>
+                    <div class="countdown-item"><span class="countdown-number">${seconds}</span><span class="countdown-label">Detik</span></div>
+                `;
+                document.getElementById('countdown').innerHTML = html;
+            }, 1000);
+        }
+
+        function handleNewsletter(e) {
+            e.preventDefault();
+            const email = document.getElementById('emailInput').value;
+            const feedback = document.getElementById('newsletterFeedback');
+
+            // Simple regex validation
+            if (/^\S+@\S+\.\S+$/.test(email)) {
+                feedback.innerHTML = `<span class="text-success"><i class="bi bi-check-circle"></i> Terima kasih telah berlangganan!</span>`;
+                document.getElementById('newsletterForm').reset();
+            } else {
+                feedback.innerHTML = `<span class="text-danger"><i class="bi bi-exclamation-circle"></i> Email tidak valid.</span>`;
+            }
+        }
+    </script>
+</body>
+
+</html>
