@@ -98,9 +98,32 @@
 
     <script>
         function sendMessage() {
-            alert(
-                "Pesan berhasil dikirim. Terima kasih telah menghubungi Lambanapu Mart.",
-            );
+            // 1. Ambil nilai (value) dari masing-masing input HTML
+            const nama = document.getElementById("nama").value;
+            const email = document.getElementById("email").value;
+            const subjek = document.getElementById("subjek").value;
+            const pesan = document.getElementById("pesan").value;
+
+            // 2. Validasi sederhana: Pastikan semua kolom tidak kosong
+            if (!nama || !email || !subjek || !pesan) {
+                alert("Harap lengkapi semua data sebelum mengirim pesan.");
+                return;
+            }
+
+            // 3. Tentukan nomor WhatsApp tujuan
+            const nomorWA = "6282112426161"; // Contoh nomor WhatsApp tujuan atau penjual
+
+            // 4. Buat format pesan yang akan masuk ke chat WhatsApp
+            const formatPesan = `Halo Lambanapu Mart, saya ingin bertanya.\n\n*Nama:* ${nama}\n*Email:* ${email}\n*Subjek:* ${subjek}\n*Pesan:* ${pesan}\n\nTerima kasih.`;
+
+            // 5. Ubah teks menjadi format URL-encoded
+            const teksEncode = encodeURIComponent(formatPesan);
+
+            // 6. Buat link API WhatsApp
+            const linkWA = `https://wa.me/${nomorWA}?text=${teksEncode}`;
+
+            // 7. Buka tab baru menuju WhatsApp
+            window.open(linkWA, "_blank");
         }
     </script>
 </body>
